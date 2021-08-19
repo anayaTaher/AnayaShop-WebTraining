@@ -1,0 +1,1 @@
+exports.isAuth = (req, res, next) => req.session.isAdmin ? next() : res.redirect("/")

@@ -1,0 +1,31 @@
+<%- include("parts/header.ejs") %>
+
+<div class="row d-flex justify-content-center mt-5">
+    <form method="post" class="col-6 col-lg-4">
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputUsername">Username</label>
+            <input aria-describedby="usernameHelp" class="form-control" id="exampleInputUsername" type="text" required name="username">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputEmail1">Email address</label>
+            <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" type="email" required name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputPassword">Password</label>
+            <input class="form-control" id="exampleInputPassword" type="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleConfirmPassword">Confirm Password</label>
+            <input class="form-control" id="exampleConfirmPassword" type="password" name="confirmPassword" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="final">Already Have An Account? <a href="/login">Login</a></div>
+    </form>
+</div>
+
+<% if(error) { %>
+    <div class="alert alert-danger d-flex justify-content-center align-items-center"
+         style="font-size: 20px; width: 25%; height: 15px"><%= error %></div>
+<% } %>
+
+<%- include("parts/footer.ejs") %>

@@ -1,0 +1,26 @@
+<div class="container" style="background-color: #FBFBFB; border-radius: 5px">
+
+    <div class="row d-flex justify-content-center align-items-center" style="background-color: #FFF">
+        <div class="col col-12 col-md-12 col-lg-6 mt-3 col-xl-4 d-flex justify-content-center align-items-center" style="background-color: #FAFAFA">
+
+            <div class="card mt-3 mb-3" style="width: 18rem">
+                <img src="/images/<%= product.image %>" class="card-img-top" style="width: 286px; height: 286px">
+                <div class="card-body" style="background-color: #F6F6F6">
+                    <h5 class="card-title" style="text-align: center"><a href="/products/<%= product._id %>"><%= product.name %></a></h5>
+                    <h5 class="card-title" style="text-align: center">Price:<span class="text-success"><%= product.price %> $</span><sub><del class="text-danger"><%= product.price * 1.5 %> $</del></sub></h5>
+                    <p class="card-text" style="text-align: center"><%= product.description %></p>
+                    <form action="/cart" method="post">
+                        <input type="number" name="amount" required class="form-control" value="1" min="1">
+                        <input type="hidden" name="name" value="<%= product.name %>">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <input type="hidden" name="redirectTo" value="/products/<%= product._id %>">
+                        <button type="submit" style="transform: translateX(76px);" class="btn btn-primary mt-3">Add To Cart</button>
+                    </form>
+                </div>
+                <span class="inner-class"><%= 10 * (3 + Math.floor(Math.random() * 5)) %>%</span>
+            </div>
+            
+        </div>
+    </div>
+</div>

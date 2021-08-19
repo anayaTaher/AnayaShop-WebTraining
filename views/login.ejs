@@ -1,0 +1,21 @@
+<%- include("parts/header.ejs") %>
+
+<div class="row d-flex justify-content-center mt-5">
+    <form class="col-6 col-lg-4" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputEmail1">Email address</label>
+            <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" required type="email" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputPassword">Password</label>
+            <input class="form-control" id="exampleInputPassword" type="password" name="password" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <div class="final">New User? <a href="/signup">Signup</a></div>
+    </form>
+</div>
+<% if(error) { %>
+    <div class="alert alert-danger d-flex justify-content-center align-items-center" style="font-size: 20px; width: 20%; height: 15px"><%= error %></div>
+<% } %>
+
+<%- include("parts/footer.ejs") %>

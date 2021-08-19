@@ -1,0 +1,70 @@
+<%- include("parts/header.ejs") %>
+
+<div class="container" style="width: 70%">
+
+    <div class="d-flex justify-content-between mt-4">
+        <form method="get">
+            <select name="status" class="form-select text-white" onchange="this.form.submit()"
+                    style="background-color: #59A1A4">
+                <option>Choose Status</option>
+                <option value="all">All</option>
+                <option value="pending">Pending</option>
+                <option value="sent">Sent</option>
+                <option value="complete">Complete</option>
+            </select>
+        </form>
+
+        <form method="post" action="">
+            <input class="form-control" placeholder="Email Address" required type="email" name="email"
+                   style="display: inline-block; width: 300px">
+            <button class="btn btn-primary" type="submit"
+                    style="display: inline-block; transform: translateY(-2px); width: 70px"> Search
+            </button>
+        </form>
+    </div>
+
+    <div class="row d-flex justify-content-center align-items-center" style="background-color: #FFF">
+
+        <table class="styled-table fs-5">
+            <thead>
+            <tr class="text-center">
+                <th>Email</th>
+                <th>Product Name</th>
+                <th>Amount</th>
+                <th>Cost</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Time</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% items.forEach(item=> { %>
+                <tr class="text-center">
+                    <td><%= item.email %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.amount %></td>
+                    <td><%= item.cost %></td>
+                    <td><%= item.location %></td>
+                    <td><%= item.status %></td>
+                    <td><%= item.timeStamp %></td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="orderId" value="<%= item._id %>">
+                            <select name="status" class="form-select w-100" onchange="this.form.submit()">
+                                <option></option>
+                                <option value="pending">Pending</option>
+                                <option value="sent">Sent</option>
+                                <option value="complete">Complete</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("parts/footer.ejs") %>

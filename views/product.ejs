@@ -1,0 +1,9 @@
+<%- include("parts/header.ejs") %>
+
+<% if(product) { %>
+    <%- include("parts/customProduct.ejs") %>
+<% } else { %>
+    <div class="alert alert-danger">There Is No Product Matches This ID.</div>
+<% } %>
+
+<%- include("parts/footer.ejs") %>

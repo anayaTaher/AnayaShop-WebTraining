@@ -1,0 +1,40 @@
+<%- include("parts/header.ejs") %>
+
+<div class="row d-flex justify-content-center mt-5">
+    <form class="col-6 col-lg-4" method="post" action="/admin/add" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputName">Product Name</label>
+            <input class="form-control" id="exampleInputName" type="text" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputPrice">Product Price</label>
+            <input class="form-control" id="exampleInputPrice" min="1" type="Number" name="price" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputCategory">Product Category</label>
+            <select name="category" id="exampleInputCategory" class="form-select w-100" required>
+                <option></option>
+                <option value="hats">Hats</option>
+                <option value="t-shirt">T-Shirts</option>
+                <option value="pants">Pants</option>
+                <option value="shoes">Shoes</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="exampleInputDescription">Product Description</label>
+            <input class="form-control" id="exampleInputDescription" type="text" name="description" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="customFile">Upload Image</label>
+            <input type="file" class="form-control" id="customFile" name="image" required accept="image/*"/>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Product</button>
+    </form>
+</div>
+
+<% if(error !== undefined) { %>
+    <div class="alert alert-danger d-flex justify-content-center align-items-center" style="font-size: 20px; width: 20%; height: 15px"><%= error %></div>
+<% } %>
+
+<%- include("parts/footer.ejs") %>

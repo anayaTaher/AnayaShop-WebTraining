@@ -1,0 +1,14 @@
+<%- include("parts/header.ejs") %>
+
+<form method="post" class="order">
+    <input type="text" name="location" required>
+    <input type="hidden" name="src" value="<%= src %>">
+    <button type="submit" class="bt btn-warning" formaction="/order/orders">Order Now !</button>
+</form>
+
+<% if (error !== undefined && error.length !== 0) { %>
+    <div class="alert alert-danger" role="alert" style="font-size: 20px; width: fit-content; transform: translateY(-75px); height: 30px; display: flex;
+justify-content: center; align-items: center"><%= error %></div>
+<% } %>
+
+<%- include("parts/footer.ejs") %>

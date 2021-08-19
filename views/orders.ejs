@@ -1,0 +1,52 @@
+<%- include("parts/header.ejs") %>
+
+<div class="container" style="width: 70%">
+
+    <div class="row d-flex justify-content-center align-items-center" style="background-color: #FFF">
+
+        <table class="styled-table fs-5">
+            <thead>
+            <tr class="text-center">
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Cost</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Time</th>
+                <form method="post" action="/order/cancelAll">
+                    <th>
+                        <button type="submit" class="btn btn-danger">Cancel All</button>
+                    </th>
+                </form>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% items.forEach(item=> { %>
+                <tr class="text-center">
+                    <td><%= item.name %></td>
+                    <td><%= item.amount %></td>
+                    <td><%= item.cost %></td>
+                    <td><%= item.location %></td>
+                    <td><%= item.status %></td>
+                    <td><%= item.timeStamp %></td>
+                    <% if(item.status.toLowerCase() === "pending") { %>
+                        <td>
+                            <form method="post" action="/order/cancel">
+                                <input type="hidden" name="orderId" value="<%= item._id %>">
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </form>
+                        </td>
+                    <% } else { %>
+                        <td>
+                            <button type="submit" class="btn btn-secondary" disabled>Cancel</button>
+                        </td>
+                    <% } %>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("parts/footer.ejs") %>

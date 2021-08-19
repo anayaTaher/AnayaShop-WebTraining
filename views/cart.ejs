@@ -1,0 +1,45 @@
+<%- include("parts/header.ejs") %>
+
+<div class="container" style="width: 70%">
+
+    <div class="row d-flex justify-content-center align-items-center" style="background-color: #FFF">
+
+        <table class="styled-table fs-5">
+            <thead>
+            <tr class="text-center">
+                <th>Number</th> <th>Name</th><th>Price</th><th>Amount</th><th>Total</th>
+                <th><form method="post">
+                        <button type="submit" class="btn btn-danger" formaction="/cart/deleteAll">Delete All</button>
+                        <button type="submit" class="btn btn-warning" formaction="/order/confirmAllOrders">Order All
+                        </button>
+                    </form></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% items.forEach((item, index)=> { %>
+                <tr class="text-center">
+                    <td><%= index + 1 %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.price %></td>
+                    <form method="post">
+                        <td><input type="number" name="amount" required class="form-control" min="1" value="<%= item.amount %>"></td>
+                        <td><%= item.price * item.amount %></td>
+                        <td>
+                            <input type="hidden" name="name" value="<%= item.name %>">
+                            <input type="hidden" name="price" value="<%= item.price %>">
+                            <input type="hidden" name="cartId" value="<%= item._id %>">
+                            <button type="submit" class="btn btn-success" formaction="/cart/save">Save</button>
+                            <button type="submit" class="btn btn-danger" formaction="/cart/delete">Delete</button>
+                            <button type="submit" class="btn btn-warning" formaction="/order/confirmOrder">Order
+                            </button>
+                        </td>
+                    </form>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("parts/footer.ejs") %>
